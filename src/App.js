@@ -1,10 +1,13 @@
+import { Provider } from 'react-redux';
+
 import './index.scss';
+import {store} from './store/configureStore';
 
 function App() {
   return (
-    <div className="App">
-      
-    </div>
+    <Provider store={store}>
+     
+    </Provider>
   );
 }
 
