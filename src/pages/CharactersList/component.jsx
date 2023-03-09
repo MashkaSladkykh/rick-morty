@@ -12,7 +12,7 @@ const Characters = ({ charactersList, setCharacters }) => {
       .then((data) => {
         setCharacters(data.results);
       });
-  }, []);
+  },[setCharacters]);
   console.log(charactersList)
 
   return (
