@@ -5,6 +5,8 @@ import { selectCharacters} from '../../store/characters/selectors';
 import { setCharacters } from '../../store/characters/actions';
 import { generateApiUrl } from '../utils';
 
+import { CharacterItem } from './CharacterItem/component';
+
 const Characters = ({ charactersList, setCharacters }) => {
   useEffect(() => {
     fetch(generateApiUrl('character'))
@@ -13,7 +15,6 @@ const Characters = ({ charactersList, setCharacters }) => {
         setCharacters(data.results);
       });
   },[setCharacters]);
-  console.log(charactersList)
 
   return (
     <main className="container">
@@ -22,11 +23,13 @@ const Characters = ({ charactersList, setCharacters }) => {
         <ul>
           {charactersList.map(({ id, name, species, image}) => 
             (
-              <li key={id}>
-                <img src={image} alt={name} />
-                <h3>{name}</h3>
-                <p>{species}</p>
-              </li>
+              <CharacterItem
+                key={id}
+                id={id}
+                name={name}
+                species={species}
+                image={image}               
+              />   
             ))}
         </ul>
       </div>
