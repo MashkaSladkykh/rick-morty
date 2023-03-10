@@ -1,0 +1,22 @@
+.container{
+    margin-top: 23px;
+    & .arrow {
+        padding-right: 8px;
+    }
+    & .back {
+        font-weight: 700;
+        font-size: 18px;
+        line-height: 21px;
+        color: black;
+        text-transform: uppercase;
+        text-decoration: none;
+    }
+    & .details {
+        margin-top: 78px;
+        &__img {
+            border: 5px solid #F2F2F7;
+            border-radius: 150px;
+            width: 150px;
+        }
+    }
+}

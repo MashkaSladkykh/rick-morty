@@ -22,6 +22,9 @@
         letter-spacing: 0.25px;
         color: rgba(0, 0, 0, 0.6);
     }
+    & a {
+        text-decoration: none;
+    }
 }
 
 @media (min-width:768px) {
@@ -29,5 +32,8 @@
         margin-bottom: 24px;
         width: 240px;
         margin-right: 20px;
+        & a :hover {
+           color: rgba(0, 0, 0, 0.6);
+        }
     }
 }
