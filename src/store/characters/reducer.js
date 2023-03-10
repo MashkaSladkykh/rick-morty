@@ -1,9 +1,10 @@
-import { SET_CHARACTERS, SET_SEARCH_QUERY, SEARCHED_CHARACTERS } from './types';
+import { SET_CHARACTERS, SET_SEARCH_QUERY, SEARCHED_CHARACTERS, SET_CHARACTER_DETAILS } from './types';
 
 const initialState = {
   characters: [],
   searchQuery: '',
   searchedCharacters: [],
+  characterDetails: {},
 };
 
 export const characters = (state = initialState, action) => {
@@ -22,6 +23,11 @@ export const characters = (state = initialState, action) => {
     return {
       ...state,
       searchedCharacters: action.payload,
+    };
+  case SET_CHARACTER_DETAILS:
+    return{
+      ...state,
+      characterDetails: action.payload,
     };
   default:
     return state;

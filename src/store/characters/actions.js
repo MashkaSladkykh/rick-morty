@@ -1,6 +1,6 @@
-import { SET_CHARACTERS, SET_SEARCH_QUERY, SEARCHED_CHARACTERS } from './types';
+import { SET_CHARACTERS, SET_SEARCH_QUERY, SEARCHED_CHARACTERS, SET_CHARACTER_DETAILS } from './types';
 
-export const setCharacters = (payload) => ({
+export const setCharacters = payload => ({
   type: SET_CHARACTERS,
   payload,
 });
@@ -12,5 +12,10 @@ export const setSearchQuery = payload => ({
 
 export const setSearchedCharacters = payload => ({
   type: SEARCHED_CHARACTERS,
+  payload,
+});
+
+export const setCharacterDetails = payload => ({
+  type: SET_CHARACTER_DETAILS,
   payload,
 });

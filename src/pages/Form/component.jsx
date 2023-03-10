@@ -5,7 +5,7 @@ import { generateApiUrl } from '../utils';
 import {selectSetSearchQuery, selectSearchedCharacters} from '../../store/characters/selectors';
 import { setSearchQuery, setSearchedCharacters} from '../../store/characters/actions';
 
-const Form = ({setSearchQuery,searchQuery, setSearchedCharacters}) => {
+const Form = ({setSearchQuery, setSearchedCharacters}) => {
   const handleChange = e => {
     e.preventDefault();
     setSearchQuery(e.target.value);
@@ -33,7 +33,7 @@ const mapStateToProps = state => ({
 const mapDispatchToProps = {
   setSearchQuery,
   setSearchedCharacters,
-}
+};
 
 export const Search = connect(mapStateToProps, mapDispatchToProps)(Form);
 
