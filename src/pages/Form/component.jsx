@@ -1,14 +1,19 @@
+import {connect} from 'react-redux';
+
 import '../../scss/form.scss';
 import { generateApiUrl } from '../utils';
+import {selectSetSearchQuery, selectSearchedCharacters} from '../../store/characters/selectors';
+import { setSearchQuery, setSearchedCharacters} from '../../store/characters/actions';
 
-export const Form = () => {
+const Form = ({setSearchQuery,searchQuery, setSearchedCharacters}) => {
   const handleChange = e => {
+    e.preventDefault();
+    setSearchQuery(e.target.value);
     fetch(generateApiUrl(`character/?name=${e.target.value}`))
       .then(response => response.json())
       .then(data => {
-      // Process data as needed
-        console.log(data.results);
-      })
+        setSearchedCharacters(data.results);
+      });
   };
 
   return (
@@ -17,3 +22,18 @@ export const Form = () => {
     </form>
   );
 };
+
+
+
+const mapStateToProps = state => ({
+  searchQuery: selectSetSearchQuery(state),
+  searchedCharacters: selectSearchedCharacters(state),
+});
+
+const mapDispatchToProps = {
+  setSearchQuery,
+  setSearchedCharacters,
+}
+
+export const Search = connect(mapStateToProps, mapDispatchToProps)(Form);
+
