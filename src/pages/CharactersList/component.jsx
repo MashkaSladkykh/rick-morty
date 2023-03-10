@@ -4,6 +4,7 @@ import { connect } from 'react-redux';
 import { selectCharacters} from '../../store/characters/selectors';
 import { setCharacters } from '../../store/characters/actions';
 import { generateApiUrl } from '../utils';
+import '../../scss/list.scss';
 
 import { CharacterItem } from './CharacterItem/component';
 
@@ -20,7 +21,7 @@ const Characters = ({ charactersList, setCharacters }) => {
     <main className="container">
       <div className="characters">
         {charactersList.length === 0 && <div>Empty list</div>}
-        <ul>
+        <ul className="list">
           {charactersList.map(({ id, name, species, image}) => 
             (
               <CharacterItem

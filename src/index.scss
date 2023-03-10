@@ -1,1 +1,17 @@
-@import './scss/common.scss';
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Roboto', sans-serif;
+}
+
+.root{
+    max-width: 312px;
+    margin: 0 auto;
+}
+
+@media(min-width:768px) {
+    .root{
+        max-width: 1020px;
+    }
+}

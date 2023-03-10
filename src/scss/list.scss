@@ -1,0 +1,15 @@
+.container {
+  ul li {
+    list-style-type: none;
+  }
+}
+
+@media (min-width:768px) {
+  .list{
+    display: flex;
+    flex-wrap: wrap;
+    margin-right: -20px;
+    margin-bottom: 188px;
+  }
+    
+}

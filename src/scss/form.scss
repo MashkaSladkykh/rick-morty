@@ -1,0 +1,21 @@
+.search {
+    margin-bottom: 32px;
+    &__field{
+        width: 100%;
+        border: 1px solid rgba(0, 0, 0, 0.5);
+        border-radius: 8px;
+        padding: 16px 16px 16px 48px;
+        background-image: url("../img/search.svg");
+        background-repeat: no-repeat;
+        background-size: 24px 24px;
+        background-position: 16px center;
+        font-size: 16px;
+    }
+}
+
+@media (min-width:768px) {
+    .search {
+        margin-bottom: 61px;
+    }
+
+}
