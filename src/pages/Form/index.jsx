@@ -1,10 +1,9 @@
 import {connect} from 'react-redux';
 import { useSearchParams } from 'react-router-dom';
-
-import '../../scss/form.scss';
-import { generateApiUrl } from '../utils';
-import {selectSetSearchQuery, selectSearchedCharacters} from '../../store/characters/selectors';
-import { setSearchQuery, setSearchedCharacters} from '../../store/characters/actions';
+import 'scss/form.scss';
+import { generateApiUrl } from 'pages/utils';
+import {selectSetSearchQuery, selectSearchedCharacters} from 'store/characters/selectors';
+import { setSearchQuery, setSearchedCharacters} from 'store/characters/actions';
 
 const Form = ({setSearchQuery, setSearchedCharacters, searchQuery}) => {
   const [searchParams, setSearchParams] = useSearchParams();

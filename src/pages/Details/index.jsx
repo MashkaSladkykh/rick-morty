@@ -1,12 +1,11 @@
 import {useEffect} from 'react';
 import {connect} from 'react-redux';
 import { Link, useLocation} from 'react-router-dom';
-
-import {selectCharacterDetails} from '../../store/characters/selectors';
-import {setCharacterDetails} from '../../store/characters/actions';
-import {generateApiUrl} from '../utils';
-import arrow from '../../img/arrow.svg';
-import '../../scss/details.scss';
+import {selectCharacterDetails} from 'store/characters/selectors';
+import {setCharacterDetails} from 'store/characters/actions';
+import {generateApiUrl} from 'pages/utils';
+import arrow from 'img/arrow.svg';
+import 'scss/details.scss';
 
 const Details = ({characterDetails, setCharacterDetails}) => {
   const location = useLocation();

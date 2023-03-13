@@ -1,11 +1,10 @@
 import { useEffect } from 'react';
 import { connect } from 'react-redux';
+import { selectCharacters, selectSearchedCharacters} from 'store/characters/selectors';
+import { setCharacters } from 'store/characters/actions';
+import { generateApiUrl, sort } from 'pages/utils';
 
-import { selectCharacters, selectSearchedCharacters} from '../../store/characters/selectors';
-import { setCharacters } from '../../store/characters/actions';
-import { generateApiUrl, sort } from '../utils';
-import '../../scss/list.scss';
-
+import 'scss/list.scss';
 import { CharacterItem } from './CharacterItem';
 
 const Characters = ({ charactersList, setCharacters, searchedCharacters }) => {

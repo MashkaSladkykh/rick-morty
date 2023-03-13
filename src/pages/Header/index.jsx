@@ -1,8 +1,7 @@
 import {useRef} from 'react';
-
-import mobileLogo from '../../img/mobile-logo.png';
-import desktopLogo from '../../img/desktop-logo.png';
-import '../../scss/header.scss';
+import mobileLogo from 'img/mobile-logo.png';
+import desktopLogo from 'img/desktop-logo.png';
+import 'scss/header.scss';
 
 export const Header = () => {
   const windowWidth = useRef(window.innerWidth);
