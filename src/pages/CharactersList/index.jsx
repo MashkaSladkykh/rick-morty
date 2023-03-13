@@ -6,7 +6,7 @@ import { setCharacters } from '../../store/characters/actions';
 import { generateApiUrl, sort } from '../utils';
 import '../../scss/list.scss';
 
-import { CharacterItem } from './CharacterItem/component';
+import { CharacterItem } from './CharacterItem';
 
 const Characters = ({ charactersList, setCharacters, searchedCharacters }) => {
   useEffect(() => {

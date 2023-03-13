@@ -3,7 +3,7 @@ import { Provider } from 'react-redux';
 import {store} from './store/configureStore';
 import { RickMortyApp } from './routes/component';
 
-function App() {
+export const App = () => {
   return (
     <Provider store={store}>
       <div className="root">
@@ -11,6 +11,4 @@ function App() {
       </div>
     </Provider>
   );
-}
-
-export default App;
+};

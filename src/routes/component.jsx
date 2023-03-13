@@ -1,7 +1,7 @@
 import {Link, Route, Routes} from 'react-router-dom';
 
-import { Home } from '../pages/component';
-import {Character} from '../pages/Details/component';
+import { Home } from '../pages';
+import {Character} from '../pages/Details';
 
 export const RickMortyApp = () => {
   return (
