@@ -23,7 +23,7 @@ const Characters = ({ charactersList, setCharacters, searchedCharacters }) => {
       <div className="characters">
         {charactersList.length === 0 && <div>Empty list</div>}
         <ul className="list">
-          {searchedCharacters !== undefined &&  searchedCharacters.length > 0 
+          {searchedCharacters !== undefined && searchedCharacters.length > 0 
             ? 
             searchedCharacters.map(({ id, name, species, image}) => 
               (
@@ -35,17 +35,19 @@ const Characters = ({ charactersList, setCharacters, searchedCharacters }) => {
                   image={image}               
                 />   
               ))
-            :          
-            charactersList.map(({ id, name, species, image}) => 
-              (
-                <CharacterItem
-                  key={id}
-                  id={id}
-                  name={name}
-                  species={species}
-                  image={image}               
-                />   
-              ))}
+            : !searchedCharacters  
+              ? <div>There is no such character</div>    
+              :
+              charactersList.map(({ id, name, species, image}) => 
+                (
+                  <CharacterItem
+                    key={id}
+                    id={id}
+                    name={name}
+                    species={species}
+                    image={image}               
+                  />   
+                ))}
         </ul>
       </div>
     </main>

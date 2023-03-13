@@ -10,14 +10,14 @@ import '../../scss/details.scss';
 
 const Details = ({characterDetails, setCharacterDetails}) => {
   const location = useLocation();
-  const [ , characterId] = location.pathname.split('=');
+  const [ , , characterId] = location.pathname.split('/');
   
 
   useEffect(() => {fetch(generateApiUrl(`character/${characterId}`))
     .then(res => res.json())
-      .then(data => {
-        setCharacterDetails(data);
-      })}, [])
+    .then(data => {
+      setCharacterDetails(data);
+    });}, [setCharacterDetails, characterId]);
   
   return (
     <main className="container">

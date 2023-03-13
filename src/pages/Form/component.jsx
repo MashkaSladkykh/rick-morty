@@ -13,7 +13,7 @@ const Form = ({setSearchQuery, setSearchedCharacters}) => {
       .then(response => response.json())
       .then(data => {
         setSearchedCharacters(data.results);
-      });
+      });  
   };
 
   return (

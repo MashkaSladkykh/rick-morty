@@ -7,7 +7,7 @@ export const RickMortyApp = () => {
   return (
     <Routes>
       <Route path="/" element={<Home/>}/>
-      <Route path=":characterId" element={<Character/>}/>
+      <Route path=":character/:Id" element={<Character/>}/>
       <Route
         path="*"
         element={
