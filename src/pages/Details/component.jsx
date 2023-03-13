@@ -26,10 +26,12 @@ const Details = ({characterDetails, setCharacterDetails}) => {
         Go back
       </Link>     
       <div className="details">
-        <img src={characterDetails.image} alt={characterDetails.name} className="details__img" />
-        <h3 className="details__name">{characterDetails.name}</h3>
+        <div className="details__container">
+          <img src={characterDetails.image} alt={characterDetails.name} className="details__img" />
+          <h3 className="details__name">{characterDetails.name}</h3>
+        </div>    
         <div className="details__information">
-          <h3>Information</h3>
+          <h3>Informations</h3>
           <div>
             <div>
               <h4>Gender</h4>
@@ -43,10 +45,10 @@ const Details = ({characterDetails, setCharacterDetails}) => {
               <h4>Specie</h4>
               <p>{characterDetails.species}</p>
             </div>
-            {/* <div>
+            <div>
               <h4>Origin</h4>
-              <p>{characterDetails.origin.name}</p>
-            </div> */}
+              <p>{characterDetails.origin ? characterDetails.origin.name : 'Unknnown'}</p>
+            </div>
             <div>
               <h4>Type</h4>
               <p>{characterDetails.type === '' ? 'Unknown' : characterDetails.type}</p>
