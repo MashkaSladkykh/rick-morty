@@ -35,7 +35,7 @@ const Form = ({setSearchedCharacters, setCharacters}) => {
           });
       }, 500);
     } if(location.search === ''){
-      setSearchedCharacters({})
+      setSearchedCharacters({});
     }
     return () => clearTimeout(timeout);
   },[searchValue]);

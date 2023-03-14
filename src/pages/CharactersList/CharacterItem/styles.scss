@@ -29,6 +29,12 @@
 
 @media (min-width:768px) {
     .list__item {
+        width: 232px;
+    }
+}
+
+@media (min-width:1020px) {
+    .list__item {
         margin-bottom: 24px;
         width: 240px;
         margin-right: 20px;
