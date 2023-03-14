@@ -1,6 +1,6 @@
 import {useEffect} from 'react';
 import {connect} from 'react-redux';
-import { Link, useLocation} from 'react-router-dom';
+import {useParams, useNavigate} from 'react-router-dom';
 import {selectCharacterDetails} from 'store/characters/selectors';
 import {setCharacterDetails} from 'store/characters/actions';
 import {generateApiUrl} from 'pages/utils';
@@ -8,22 +8,22 @@ import arrow from 'img/arrow.svg';
 import 'scss/details.scss';
 
 const Details = ({characterDetails, setCharacterDetails}) => {
-  const location = useLocation();
-  const [ , , characterId] = location.pathname.split('/');
-  
+  const {Id} = useParams();  
+  const navigate = useNavigate();
 
-  useEffect(() => {fetch(generateApiUrl(`character/${characterId}`))
-    .then(res => res.json())
-    .then(data => {
-      setCharacterDetails(data);
-    });}, [setCharacterDetails, characterId]);
+  useEffect(() => {
+    fetch(generateApiUrl(`character/${Id}`))
+      .then(res => res.json())
+      .then(data => {
+        setCharacterDetails(data);
+      });}, [setCharacterDetails, Id]);
   
   return (
     <main className="container">
-      <Link to="/" className="back">
+      <button onClick={()=>navigate(-1)} className="back">
         <img src={arrow} alt="arrow" className="arrow" />
         Go back
-      </Link>     
+      </button>     
       <div className="details">
         <div className="details__container">
           <img src={characterDetails.image} alt={characterDetails.name} className="details__img" />
@@ -56,7 +56,6 @@ const Details = ({characterDetails, setCharacterDetails}) => {
         </div>
       </div>
     </main>
-
   );
 };
   

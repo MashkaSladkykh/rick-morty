@@ -1,21 +1,15 @@
-import { useEffect } from 'react';
 import { connect } from 'react-redux';
 import { selectCharacters, selectSearchedCharacters} from 'store/characters/selectors';
-import { setCharacters } from 'store/characters/actions';
-import { generateApiUrl, sort } from 'pages/utils';
+import { sort } from 'pages/utils';
 
 import 'scss/list.scss';
 import { CharacterItem } from './CharacterItem';
 
-const Characters = ({ charactersList, setCharacters, searchedCharacters }) => {
-  useEffect(() => {
-    fetch(generateApiUrl('character'))
-      .then((res) => res.json())
-      .then((data) => {
-        setCharacters(data.results);
-      });
-  },[setCharacters]);
-  searchedCharacters !== undefined && searchedCharacters.length > 0 ? sort(searchedCharacters) : sort(charactersList);
+const Characters = ({ charactersList, searchedCharacters }) => {
+  searchedCharacters !== undefined && 
+  searchedCharacters.length > 0 
+    ? sort(searchedCharacters) 
+    : sort(charactersList);
 
   return (
     <main className="container">
@@ -58,8 +52,4 @@ const mapStateToProps = (state) => ({
   searchedCharacters: selectSearchedCharacters(state),
 });
 
-const mapDispatchToProps = {
-  setCharacters,
-};
-
-export const CharactersList = connect(mapStateToProps, mapDispatchToProps)(Characters);
+export const CharactersList = connect(mapStateToProps)(Characters);

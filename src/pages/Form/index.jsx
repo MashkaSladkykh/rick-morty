@@ -1,26 +1,47 @@
 import {connect} from 'react-redux';
-import { useSearchParams } from 'react-router-dom';
+import { useEffect, useState } from 'react';
+import { useSearchParams, useLocation} from 'react-router-dom';
 import 'scss/form.scss';
 import { generateApiUrl } from 'pages/utils';
-import {selectSetSearchQuery, selectSearchedCharacters} from 'store/characters/selectors';
-import { setSearchQuery, setSearchedCharacters} from 'store/characters/actions';
+import {selectSetSearchQuery, selectSearchedCharacters, selectCharacters} from 'store/characters/selectors';
+import { setSearchQuery, setSearchedCharacters, setCharacters} from 'store/characters/actions';
 
-const Form = ({setSearchQuery, setSearchedCharacters, searchQuery}) => {
+const Form = ({setSearchQuery, setSearchedCharacters, searchQuery, setCharacters}) => {
   const [searchParams, setSearchParams] = useSearchParams();
+  const [searchValue, setSearchValue] = useState('');
+  const location = useLocation();
 
-  const handleChange = e => {
+  useEffect(()=>{
+    let timeout;
     const search = {
-      character: e.target.value,
+      character: searchValue,
     };
-    setSearchParams(search, { replace: true });
-
-    setSearchQuery(e.target.value);
-    
-    fetch(generateApiUrl(`character/?name=${e.target.value}`))
-      .then(response => response.json())
-      .then(data => {
-        setSearchedCharacters(data.results);
-      });
+ 
+    if(!searchValue){
+      fetch(generateApiUrl('character'))
+        .then(response => response.json())
+        .then(data => {
+          setCharacters(data.results);
+        });
+      searchParams.delete('character');
+    } else {
+      timeout = setTimeout(()=>{
+        setSearchParams(search, {replace: true});
+        setSearchQuery(searchValue);
+        fetch(generateApiUrl(`character/?name=${searchValue}`))
+          .then(response => response.json())
+          .then(data => {
+            setSearchedCharacters(data.results);
+          });
+      }, 500);
+    } if(location.search === ''){
+      setSearchedCharacters({})
+    }
+    return () => clearTimeout(timeout);
+  },[searchValue]);
+  
+  const handleChange = e => {
+    setSearchValue(e.target.value);
   };
 
   return (
@@ -29,8 +50,8 @@ const Form = ({setSearchQuery, setSearchedCharacters, searchQuery}) => {
         className="search__field" 
         type="text" 
         placeholder="Filter by name..."  
-        onChange={handleChange} 
-        value={searchQuery}/>           
+        onChange={handleChange}
+        value={searchValue}/>           
     </form>
   );
 };
@@ -40,11 +61,13 @@ const Form = ({setSearchQuery, setSearchedCharacters, searchQuery}) => {
 const mapStateToProps = state => ({
   searchQuery: selectSetSearchQuery(state),
   searchedCharacters: selectSearchedCharacters(state),
+  characters: selectCharacters(state),
 });
 
 const mapDispatchToProps = {
   setSearchQuery,
   setSearchedCharacters,
+  setCharacters,
 };
 
 export const Search = connect(mapStateToProps, mapDispatchToProps)(Form);
