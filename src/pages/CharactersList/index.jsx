@@ -2,7 +2,7 @@ import { connect } from 'react-redux';
 import { selectCharacters, selectSearchedCharacters} from 'store/characters/selectors';
 import { sort } from 'pages/utils';
 
-import 'scss/list.scss';
+import './styles.scss';
 import { CharacterItem } from './CharacterItem';
 
 const Characters = ({ charactersList, searchedCharacters }) => {

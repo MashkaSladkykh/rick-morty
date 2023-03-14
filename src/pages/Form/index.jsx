@@ -1,12 +1,13 @@
 import {connect} from 'react-redux';
 import { useEffect, useState } from 'react';
 import { useSearchParams, useLocation} from 'react-router-dom';
-import 'scss/form.scss';
 import { generateApiUrl } from 'pages/utils';
-import {selectSetSearchQuery, selectSearchedCharacters, selectCharacters} from 'store/characters/selectors';
-import { setSearchQuery, setSearchedCharacters, setCharacters} from 'store/characters/actions';
+import {selectSearchedCharacters, selectCharacters} from 'store/characters/selectors';
+import {setSearchedCharacters, setCharacters} from 'store/characters/actions';
 
-const Form = ({setSearchQuery, setSearchedCharacters, searchQuery, setCharacters}) => {
+import './styles.scss';
+
+const Form = ({setSearchedCharacters, setCharacters}) => {
   const [searchParams, setSearchParams] = useSearchParams();
   const [searchValue, setSearchValue] = useState('');
   const location = useLocation();
@@ -27,7 +28,6 @@ const Form = ({setSearchQuery, setSearchedCharacters, searchQuery, setCharacters
     } else {
       timeout = setTimeout(()=>{
         setSearchParams(search, {replace: true});
-        setSearchQuery(searchValue);
         fetch(generateApiUrl(`character/?name=${searchValue}`))
           .then(response => response.json())
           .then(data => {
@@ -56,16 +56,12 @@ const Form = ({setSearchQuery, setSearchedCharacters, searchQuery, setCharacters
   );
 };
 
-
-
 const mapStateToProps = state => ({
-  searchQuery: selectSetSearchQuery(state),
   searchedCharacters: selectSearchedCharacters(state),
   characters: selectCharacters(state),
 });
 
 const mapDispatchToProps = {
-  setSearchQuery,
   setSearchedCharacters,
   setCharacters,
 };

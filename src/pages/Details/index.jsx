@@ -5,7 +5,7 @@ import {selectCharacterDetails} from 'store/characters/selectors';
 import {setCharacterDetails} from 'store/characters/actions';
 import {generateApiUrl} from 'pages/utils';
 import arrow from 'img/arrow.svg';
-import 'scss/details.scss';
+import './styles.scss';
 
 const Details = ({characterDetails, setCharacterDetails}) => {
   const {Id} = useParams();  
